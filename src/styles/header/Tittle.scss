@@ -1,0 +1,19 @@
+.Tittle {
+  text-align: center;
+
+  h1 {
+    font-family: 'Reggae One', cursive;
+    position: relative;
+    color: #FFFFFF;
+    font-size: 2.5em;
+    font-weight: normal;
+    margin: 0;
+    display: inline-block;
+  }
+}
+
+@media (max-width: 495px) {
+  .Tittle h1 {
+    font-size: 1.5em;
+  }
+}
