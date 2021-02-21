@@ -1,0 +1,1 @@
+export const SHOW_LOADER = 'GAME/SHOW_LOADER';

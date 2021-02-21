@@ -3,7 +3,7 @@ import '../../styles/main/Main.scss'
 
 export default () => {
     return (
-        <main className="Main"/>
+        <div/>
     );
 
 }

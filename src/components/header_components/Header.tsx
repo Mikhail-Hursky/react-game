@@ -4,12 +4,12 @@ import Logo from "./Logo";
 import Settings from "./Settings";
 import Tittle from "./Tittle";
 
-export default class Header extends React.Component {
-    render() {
-        return <header className="Header">
-            <Logo />
-            <Tittle />
-            <Settings />
-        </header>;
-    }
+export default () => {
+    return (
+        <header className="Header">
+            <Logo/>
+            <Tittle/>
+            <Settings/>
+        </header>
+    );
 }
