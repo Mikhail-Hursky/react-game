@@ -1,7 +1,7 @@
 import React from 'react';
 import '../../styles/header/Header.scss'
 import Logo from "./Logo";
-import Settings from "./Settings";
+import SettingsBtn from "./SettingsBtn";
 import Tittle from "./Tittle";
 
 export default () => {
@@ -9,7 +9,7 @@ export default () => {
         <header className="Header">
             <Logo/>
             <Tittle/>
-            <Settings/>
+            <SettingsBtn/>
         </header>
     );
 }

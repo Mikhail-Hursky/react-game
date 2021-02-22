@@ -1,9 +1,9 @@
 import React from 'react';
-import '../../styles/main/Main.scss'
+import '../../../styles/main/game/Game.scss';
 
 export default () => {
     return (
-        <div/>
+        <div className='Game'/>
     );
 
 }

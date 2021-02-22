@@ -1,0 +1,14 @@
+.SettingContainer {
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.5);
+  height: 0;
+  width: 20%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: #FFFFFF;
+}
+
+.isOpen {
+  height: 40%;
+}
