@@ -18,7 +18,8 @@
 
   .author {
     color: #FFFFFF;
-    width: 310px;
+    text-align: center;
+    width: 100%;
     font-size:2rem;
     font-family: 'Reggae One', cursive;
   }
@@ -28,5 +29,18 @@
     color: #FFFFFF;
     font-size:2rem;
     font-family: 'Reggae One', cursive;
+  }
+}
+
+@media (max-width: 584px) {
+  .Footer {
+
+    .author {
+      font-size:1.5rem;
+    }
+
+    p {
+      font-size:2rem;
+    }
   }
 }
