@@ -1,4 +1,8 @@
-import {HIDE_SETTING, SET_QUANTITY_CARD, SET_SHIRT_CARD, SHOW_SETTING} from "../types";
+import {HIDE_SETTING,
+    SET_QUANTITY_CARD,
+    SET_SHIRT_CARD,
+    SHOW_SETTING
+} from "../types";
 
 export const hideSetting = () => ({type: HIDE_SETTING});
 export const showSetting = () => ({type: SHOW_SETTING});

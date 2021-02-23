@@ -1,5 +1,11 @@
-import {ActionSettings, GameSettings} from "../interfaces/interfaces"
-import {HIDE_SETTING, RED_SHIRT, SET_QUANTITY_CARD, SET_SHIRT_CARD, SHOW_SETTING} from "../types";
+import {Setting, GameSettings} from "../interfaces/interfaces"
+import {
+    HIDE_SETTING,
+    RED_SHIRT,
+    SET_QUANTITY_CARD,
+    SET_SHIRT_CARD,
+    SHOW_SETTING
+} from "../types";
 
 const initialState: GameSettings = {
     quantityCard: 24,
@@ -7,7 +13,7 @@ const initialState: GameSettings = {
     isOpen: false
 }
 
-export const settingReducer = (state: GameSettings = initialState, action: ActionSettings) => {
+export const settingReducer = (state: GameSettings = initialState, action: Setting) => {
     switch (action.type) {
         case SHOW_SETTING:
             return {...state, isOpen: true};

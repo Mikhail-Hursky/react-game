@@ -7,7 +7,9 @@ export const QUANTITY_CARD36 = 36;
 export const QUANTITY_CARD52 = 52;
 
 //GAME
-export const SHOW_LOADER = 'GAME/SHOW_LOADER';
+export const START_GAME = 'GAME/START_GAME';
+export const STOP_GAME = 'GAME/STOP_GAME';
+export const RESTART_GAME = 'GAME/RESTART_GAME';
 
 //SETTING
 export const SHOW_SETTING = 'SETTING/SHOW_SETTING';
