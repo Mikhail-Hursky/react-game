@@ -1,0 +1,47 @@
+.Player {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 70%;
+  height: 20%;
+
+  img{
+    border: 1px solid black;
+    border-radius: 5px;
+    margin-left: -10%;
+  }
+
+  img:first-child {
+    margin-left: 0;
+  }
+
+  img:hover {
+    z-index: 1;
+  }
+
+}
+
+
+@media (max-width: 1000px) {
+  .Player{
+    img{
+      border: 1px solid black;
+      border-radius: 5px;
+      margin-left: -20%;
+    }
+  }
+
+}
+
+
+@media (max-width: 700px) {
+  .Player{
+    img{
+      border: 1px solid black;
+      border-radius: 5px;
+      margin-left: -30%;
+    }
+  }
+
+}

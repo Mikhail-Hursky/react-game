@@ -51,7 +51,7 @@ import C2 from './2C.png';
 import K2 from './2K.png';
 import P2 from './2P.png';
 
-const CARDS = [
+const CARDS:Card[] = [
     {img: BA, weight: 13, suit: 'B'},
     {img: CA, weight: 13, suit: 'C'},
     {img: KA, weight: 13, suit: 'K'},
@@ -106,7 +106,7 @@ const CARDS = [
     {img: P2, weight: 1, suit: 'P'},
 ];
 
-interface Card {
+export interface Card {
     img: string,
     weight: number,
     suit: string,
@@ -116,5 +116,5 @@ export {
     CARDS
 };
 
-export type { Card };
+
 
