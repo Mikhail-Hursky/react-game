@@ -2,4 +2,26 @@
   margin: 0 auto;
   width: 90%;
   height: 60%;
+  display: flex;
+  align-items: center;
+
+  .set {
+    position: relative;
+    .suit{
+      transform: rotate(90deg);
+    }
+    div {
+      position: absolute;
+      top: 0;
+      left: -35%;
+      h2{
+        background-color: black;
+        color:white;
+        margin-top: 5px;
+        margin-left: 20%;
+        text-align: center;
+        border-radius: 50%;
+      }
+    }
+  }
 }

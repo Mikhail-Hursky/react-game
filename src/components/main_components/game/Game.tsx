@@ -24,7 +24,7 @@ export default () => {
             if (card.suit === cardArr[0].suit) card.weight += 14
         });
 
-        const playerCard = cardArr.splice(cardArr.length - 15, cardArr.length);
+        const playerCard = cardArr.splice(cardArr.length - 6, cardArr.length);
         const computerCard = cardArr.splice(cardArr.length - 6, cardArr.length);
         const trumpSuit = cardArr.shift();
 
@@ -32,7 +32,7 @@ export default () => {
             return (
                 <div className='Game'>
                     <Computer card={computerCard}/>
-                    <PlayField suit={trumpSuit} card={computerCard}/>
+                    <PlayField suit={trumpSuit} card={cardArr}/>
                     <Player card={playerCard}/>
                 </div>
             )
