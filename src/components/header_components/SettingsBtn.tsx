@@ -2,7 +2,7 @@ import React from 'react';
 import '../../styles/header/Settings.scss';
 import {useDispatch, useSelector} from "react-redux";
 import {hideSetting, showSetting} from "../../redux/actions/settingActions";
-import {stopGame} from "../../redux/actions/gameActions";
+import {cleanTable, setCardTable, stopGame} from "../../redux/actions/gameActions";
 
 export default function SettingsBtn() {
     const dispatch = useDispatch()
@@ -13,8 +13,12 @@ export default function SettingsBtn() {
 
     if (isStart) {
         return (
-            <button type="button" className="btn btn-danger" onClick={() => dispatch(stopGame())}>
-                <i className="bi bi-stop-circle"/>&nbsp;&nbsp;Stop&nbsp;&nbsp;&nbsp;
+            <button type="button" className="btn btn-danger" onClick={() => {
+                dispatch(cleanTable())
+                dispatch(setCardTable(undefined))
+                dispatch(stopGame())
+            }}>
+                <i className="bi bi-stop-circle"/>&nbsp;&nbsp;Стоп&nbsp;&nbsp;&nbsp;
             </button>
         )
     }
@@ -28,7 +32,8 @@ export default function SettingsBtn() {
     }
 
     return (
-        <button type="button" className="btn btn-dark" onClick={() => dispatch(showSetting())}><i className="bi bi-gear"/>&nbsp;Setting
+        <button type="button" className="btn btn-dark" onClick={() => dispatch(showSetting())}>
+            <i className="bi bi-gear"/>&nbsp;Настройки
         </button>
     );
 }
