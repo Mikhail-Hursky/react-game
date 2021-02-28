@@ -4,7 +4,7 @@ import {
     RESTART_GAME,
     SET_CARD_COMP,
     SET_CARD_KIT,
-    SET_CARD_PLAYER, SET_CARDS_TABLE,
+    SET_CARD_PLAYER,
     SET_MOVE,
     SET_TRUMP_SUIT,
     START_GAME,
@@ -21,7 +21,6 @@ const initialState: GameState = {
     isStart: false,
     suit: undefined,
     tableCards: [],
-    tableCard: undefined,
     userCard: [],
     wasteCards: []
 }
@@ -46,10 +45,9 @@ export const gameReducer = (state: GameState = initialState, action: Game) => {
             return {...state, isMoveUser: action.payload}
         case BEAT_OFF_USER:
             return {...state, isBeatUser: action.payload}
-        case SET_CARDS_TABLE:
-            return {...state, tableCards: action.payload};
         case SET_CARD_TABLE:
-            return {...state, tableCard: action.payload};
+            if(!action.payload) return{...state, tableCards: []}
+            return {...state, tableCards: state.tableCards.concat(action.payload)};
         case REMOVE_CARDS_TABLE:
             return {...state, tableCards: []};
         case BEAT_COMPUTER:

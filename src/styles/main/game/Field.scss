@@ -12,6 +12,18 @@
     width: 100%;
     height: 90%;
     background-color: blue;
+
+    img{
+      border: 1px solid black;
+      border-radius: 10px;
+    }
+
+    .BeatCard {
+      position: relative;
+      left : -98px;
+      transform:rotate(25deg);
+      margin: 0;
+    }
   }
 
 }

@@ -1,12 +1,11 @@
 import React, {ReactNode} from 'react';
 import '../../../styles/main/game/Computer.scss';
 import {Card} from "../../../assets/image/card/images";
-import {useDispatch, useSelector} from "react-redux";
+import {connect, useDispatch, useSelector} from "react-redux";
 import {RED_SHIRT} from "../../../redux/types";
 import shirtBlue from '../../../assets/image/backB.png'
 import shirtRed from '../../../assets/image/backR.png'
-import {addCardComputer, addCardPlayer, setCardTable, setMove} from "../../../redux/actions/gameActions";
-import {log} from "util";
+import {addCardComputer, setCardTable, setMove} from "../../../redux/actions/gameActions";
 
 
 function Computer() {
@@ -22,34 +21,33 @@ function Computer() {
     // @ts-ignore
     const isMoveUser = useSelector(state => state.game.isMoveUser)
     // @ts-ignore
-    const lastCard = useSelector(state => state.game.tableCard)
+    const lastCard = useSelector(state => state.game.tableCards)
     const cards: ReactNode[] = [];
 
     cardArr.sort((a: Card, b: Card) => a.weight - b.weight);
 
-    if (!isBeatUser && !isMoveUser && lastCard) {
-        console.log(lastCard, cardArr, suit.suit);
-        const card = batteringTheComputer(lastCard, cardArr, suit.suit);
-        console.log(card,'COMPUTER')
+    if (!isBeatUser && !isMoveUser && lastCard.length > 0) {
+        const card = batteringTheComputer(lastCard[lastCard.length - 1], cardArr, suit.suit);
+
         if (!card[0]) {
             takeAway()
         } else {
             const removed = cardArr.splice(card[1], 1);
             dispatch(addCardComputer(cardArr));
-            dispatch(setCardTable(removed[0]));
             dispatch(setMove(true));
+            dispatch(setCardTable(removed));
 
         }
     }
 
     for (let i = cardArr.length; 0 < i; i--) {
-        if (color === RED_SHIRT) cards.push((<img src={shirtRed} key={i} alt=""/>));
-        else cards.push((<img src={shirtBlue} key={i} alt=""/>));
+        if (color === RED_SHIRT) cards.push((<img src={shirtRed} key={cardArr.img} alt=""/>));
+        else cards.push((<img src={shirtBlue} key={cardArr.img} alt=""/>));
     }
 
     return (
         <div className="Computer">
-            {cardArr.map((c: Card) => <img src={c.img} alt=""/>)}
+            {cardArr.map((c: Card) => <img src={c.img} key={c.img} alt=""/>)}
         </div>
     );
 }
@@ -73,5 +71,14 @@ function batteringTheComputer(lastCard: Card,
 function takeAway() {
     console.log('Take away')
 }
+
+
+/*const mapStateToProps= state => ({
+
+})
+
+const mapDispatchToProps= {
+
+}*/
 
 export default Computer;

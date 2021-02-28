@@ -21,7 +21,7 @@ function Player() {
         if (isMoveUser) {
             const removed = card.splice(index, 1);
             dispatch(addCardPlayer(card));
-            dispatch(setCardTable(removed[0]));
+            dispatch(setCardTable(removed));
             dispatch(setMove(false));
         }
     }
@@ -37,7 +37,10 @@ function Player() {
     );
 
     return (
-        <div className='Player'>{cards}</div>
+        <div className='Player'>
+            &lt;button&gt;&lt;/button&gt;
+            {cards}
+        </div>
     );
 }
 

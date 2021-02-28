@@ -30,7 +30,6 @@ export interface GameState {
     isMoveUser?: boolean
     isBeatUser?: boolean
     tableCards: Card[]
-    tableCard?: Card
     isStart: boolean
 }
 
@@ -63,7 +62,7 @@ interface ActionGame {
         typeof SET_CARD_TABLE|
         typeof BEAT_COMPUTER
 
-    payload: boolean | number | string | Card
+    payload:any
 }
 
 export type Setting = ActionSetting
