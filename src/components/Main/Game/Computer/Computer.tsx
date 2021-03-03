@@ -51,7 +51,6 @@ function Computer(props: Props) {
   props.cards.sort((a: Card, b: Card) => a.weight - b.weight);
 
   if (!props.takesUser) {
-    
     //Отбиваеться или берет
     if (props.isMove && props.isBeat) {
       const lastCard = props.tableCards[props.tableCards.length - 1];
@@ -114,7 +113,6 @@ function Computer(props: Props) {
       }
     }
   } else {
-
     const arr = props.cards.filter((card) => {
       props.tableCards.forEach((tableCard) => {
         if (card.weight === tableCard.weight) {
@@ -130,18 +128,18 @@ function Computer(props: Props) {
       });
     });
 
-    batch(()=>props.setCardsUser(arr));
+    batch(() => props.setCardsUser(arr));
   }
 
-  /* const cards: ReactNode[] = props.cards.map((card: Card) => {
+  const cards: ReactNode[] = props.cards.map((card: Card) => {
     if (props.color === RED_SHIRT)
       return <img src={shirtRed} key={card.img} alt="" />;
     else return <img src={shirtBlue} key={card.img} alt="" />;
-  }); */
-
-  const cards: ReactNode[] = props.cards.map((card: Card) => {
-      return <img src={card.img} key={card.img} alt="" />;
   });
+
+  /* const cards: ReactNode[] = props.cards.map((card: Card) => {
+      return <img src={card.img} key={card.img} alt="" />;
+  }); */
 
   return <div className="Computer">{cards}</div>;
 }

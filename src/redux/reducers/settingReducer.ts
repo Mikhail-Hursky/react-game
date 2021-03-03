@@ -9,7 +9,7 @@ import {
 } from "../types";
 
 const initialState: SettingInterface = {
-  quantityCard: 24,
+  quantityCard: 52,
   shirtColor: RED_SHIRT,
   isOpen: false,
 };
