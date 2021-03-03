@@ -7,6 +7,7 @@ import {compose, createStore, applyMiddleware} from 'redux';
 import thunk from 'redux-thunk';
 import {rootReducer} from "./redux/reducers/rootReducer";
 import createSagaMiddleware from 'redux-saga';
+import createLogger from 'redux-logger'
 
 
 
@@ -16,6 +17,8 @@ declare global {
     }
 }
 
+const logger = createLogger
+
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const saga = createSagaMiddleware()
@@ -23,7 +26,7 @@ const saga = createSagaMiddleware()
 // @ts-ignore
 const store = createStore(rootReducer, compose(
     applyMiddleware(
-        thunk, saga
+        thunk, saga, /* logger */
     ),
     composeEnhancers()
 ))

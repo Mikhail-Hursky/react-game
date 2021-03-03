@@ -1,0 +1,30 @@
+.Header {
+  width: 100%;
+  height: 10vh;
+  background-color: #000000;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.5), 0 10px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#radio {
+  height: 40px;
+  width: 20%;
+  position: absolute;
+  z-index: 1;
+  bottom: 10vh;
+
+  img {
+    width: 20px;
+    height: 20px;
+  }
+
+  #rad_player {
+    #rad_block_logo {
+    }
+    #rad_logo {
+      display: none;
+    }
+  }
+}
