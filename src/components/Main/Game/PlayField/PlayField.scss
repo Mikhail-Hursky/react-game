@@ -31,3 +31,21 @@
     }
   }
 }
+
+
+@media (max-width: 600px) {
+  .PlayField {
+    .Set{
+      .suit{
+        height:110px;
+          width:75px
+      }
+      div{
+        img{
+          height:110px;
+          width:75px
+        }
+      }
+    }
+  }
+}

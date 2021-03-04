@@ -8,26 +8,30 @@ import {
   SET_TAKES_COMPUTER,
 } from "../types";
 
-const initialState: ComputerInterfaces = {
-  isMove: null,
-  cards: [],
-  isBeat: null,
-  isTakes: null,
-};
+const initialState: ComputerInterfaces =
+  localStorage.getItem("COMPUTER") === null
+    ? { isMove: null, cards: [], isBeat: null, isTakes: null }
+    : //@ts-ignore
+      JSON.parse(localStorage.getItem("COMPUTER"));
 
 export const computerReducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case SET_MOVE_COMPUTER:
-      return { ...state, isMove: action.payload };
+      state = { ...state, isMove: action.payload };
+      break;
     case SET_CARD_COMP:
-      return { ...state, cards: action.payload };
+      state = { ...state, cards: action.payload };
+      break;
     case SET_CARDS_COMP:
-      return { ...state, cards: state.cards.concat(action.payload) };
+      state = { ...state, cards: state.cards.concat(action.payload) };
+      break;
     case SET_BEAT_COMPUTER:
-      return { ...state, isBeat: action.payload };
+      state = { ...state, isBeat: action.payload };
+      break;
     case SET_TAKES_COMPUTER:
-      return { ...state, isTakes: action.payload };
-    default:
-      return state;
+      state = { ...state, isTakes: action.payload };
+      break;
   }
+  localStorage.setItem("COMPUTER", JSON.stringify(state));
+  return state;
 };

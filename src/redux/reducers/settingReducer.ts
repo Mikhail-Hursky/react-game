@@ -8,11 +8,15 @@ import {
   SHOW_SETTING,
 } from "../types";
 
-const initialState: SettingInterface = {
-  quantityCard: 52,
-  shirtColor: RED_SHIRT,
-  isOpen: false,
-};
+const initialState: SettingInterface =
+  localStorage.getItem("SETTING") === null
+    ? {
+        quantityCard: 52,
+        shirtColor: RED_SHIRT,
+        isOpen: false,
+      }
+    : //@ts-ignore
+      JSON.parse(localStorage.getItem("SETTING"));
 
 export const settingReducer = (
   state: SettingInterface = initialState,
@@ -20,14 +24,18 @@ export const settingReducer = (
 ) => {
   switch (action.type) {
     case SHOW_SETTING:
-      return { ...state, isOpen: true };
+      state = { ...state, isOpen: true };
+      break;
     case HIDE_SETTING:
-      return { ...state, isOpen: false };
+      state = { ...state, isOpen: false };
+      break;
     case SET_QUANTITY_CARD:
-      return { ...state, quantityCard: action.payload };
+      state = { ...state, quantityCard: action.payload };
+      break;
     case SET_SHIRT_CARD:
-      return { ...state, shirtColor: action.payload };
-    default:
-      return state;
+      state = { ...state, shirtColor: action.payload };
+      break;
   }
+  localStorage.setItem("SETTING", JSON.stringify(state));
+  return state
 };

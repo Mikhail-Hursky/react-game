@@ -1,3 +1,12 @@
 .Computer {
   padding-top: 5px;
 }
+
+@media (max-width: 600px) {
+  .Computer{
+    img{
+      height: 120px;
+      width:75px;
+    }
+  }
+}

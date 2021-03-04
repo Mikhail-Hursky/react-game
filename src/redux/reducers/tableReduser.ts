@@ -9,30 +9,40 @@ import {
   SET_TRUMP_SUIT,
 } from "../types";
 
-const initialState: Table = {
-  cardsKit: [],
-  discharge: [],
-  tableCards: [],
-  whoMove: null,
-  suit: null,
-  additionCard: false,
-};
+const initialState: Table =
+  localStorage.getItem("TABLE") === null
+    ? {
+        cardsKit: [],
+        discharge: [],
+        tableCards: [],
+        whoMove: null,
+        suit: null,
+        additionCard: false,
+      }
+    : //@ts-ignore
+      JSON.parse(localStorage.getItem("TABLE"));
 
 export const tableReducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case SET_TRUMP_SUIT:
-      return { ...state, suit: action.payload };
+      state = { ...state, suit: action.payload };
+      break;
     case SET_CARD_KIT:
-      return { ...state, cardsKit: action.payload };
+      state = { ...state, cardsKit: action.payload };
+      break;
     case SET_MOVE:
-      return { ...state, whoMove: action.payload };
+      state = { ...state, whoMove: action.payload };
+      break;
     case SET_CARD_TABLE:
-      return { ...state, tableCards: state.tableCards.concat(action.payload) };
+      state = { ...state, tableCards: state.tableCards.concat(action.payload) };
+      break;
     case REMOVE_CARDS_TABLE:
-      return { ...state, tableCards: [] };
+      state = { ...state, tableCards: [] };
+      break;
     case SET_ADITION:
-      return { ...state, additionCard: action.payload };
-    default:
-      return state;
+      state = { ...state, additionCard: action.payload };
+      break;
   }
+  localStorage.setItem("TABLE", JSON.stringify(state));
+  return state;
 };

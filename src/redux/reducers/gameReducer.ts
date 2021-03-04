@@ -1,9 +1,13 @@
 import { Action, GameState } from "../interfaces/interfaces";
 import { RESTART_GAME, START_GAME, STOP_GAME } from "../types";
 
-const initialState: GameState = {
-  isStart: false,
-};
+const initialState: GameState =
+  localStorage.getItem("GAME") === null
+    ? {
+        isStart: false,
+      }
+    : //@ts-ignore
+      JSON.parse(localStorage.getItem("GAME"));
 
 export const gameReducer = (
   state: GameState = initialState,
@@ -11,12 +15,14 @@ export const gameReducer = (
 ) => {
   switch (action.type) {
     case START_GAME:
-      return { ...state, isStart: true };
+      state = { ...state, isStart: true };
+      break;
     case STOP_GAME:
-      return { ...state, isStart: false };
+      state = { ...state, isStart: false };
+      break;
     case RESTART_GAME:
-      return;
-    default:
-      return state;
+      break;
   }
+  localStorage.setItem("GAME", JSON.stringify(state));
+  return state;
 };

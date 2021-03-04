@@ -13,7 +13,6 @@ function PlayField() {
         <div className='PlayField'>
             <CardsKit />
             <Field />
-            <Bit />
         </div>
     );
 }
