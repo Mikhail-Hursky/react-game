@@ -15,6 +15,7 @@ import {
   setCardTable,
   cleanTable,
   setAdition,
+  setMove,
 } from "../../../../redux/actions/tableActions";
 import {
   setMoveUser,
@@ -26,6 +27,7 @@ interface Props {
   [x: string]: any;
   color: string;
   cards: Card[];
+  cardsKit: Card[];
   isBeat: boolean;
   suit: Card;
   isMove: boolean;
@@ -38,6 +40,7 @@ const mapDispatchToProps = {
   setTakesСomputer,
   setCardComputer,
   setCardTable,
+  setMove,
   setMoveUser,
   setMoveComputer,
   cleanTable,
@@ -78,21 +81,15 @@ function Computer(props: Props) {
       }
     }
 
-    //Ходит или бита
-    if (props.isMove && !props.isBeat) {
-      if (props.tableCards.length === 0) {
-        const removedCard = props.cards.splice(0, 1);
-        batch(() => {
-          props.setCardComputer(props.cards);
-          props.setMoveComputer(false);
-          props.setCardTable(removedCard);
-        });
-
-        props.setMoveUser(true);
-      } else {
-        const index = throwACard(props.tableCards, props.cards);
-        if (index) {
-          const removedCard = props.cards.splice(index, 1);
+    if (
+      !(props.cards.length < 6) ||
+      props.tableCards.length === 0 ||
+      props.cardsKit.length === 0
+    ) {
+      //Ходит или бита
+      if (props.isMove && !props.isBeat) {
+        if (props.tableCards.length === 0) {
+          const removedCard = props.cards.splice(0, 1);
           batch(() => {
             props.setCardComputer(props.cards);
             props.setMoveComputer(false);
@@ -101,14 +98,29 @@ function Computer(props: Props) {
 
           props.setMoveUser(true);
         } else {
-          batch(() => {
-            props.setMoveComputer(false);
-            props.setBeatComputer(true);
-            props.cleanTable();
-          });
-          props.setAdition(true);
-          props.setMoveUser(true);
-          props.setBeatUser(false);
+          const index = throwACard(props.tableCards, props.cards);
+          if (index) {
+            const removedCard = props.cards.splice(index, 1);
+            batch(() => {
+              props.setCardComputer(props.cards);
+              props.setMoveComputer(false);
+              props.setCardTable(removedCard);
+            });
+
+            props.setMoveUser(true);
+          } else {
+            batch(() => {
+              props.setMoveComputer(false);
+              props.setBeatComputer(true);
+              props.cleanTable();
+            });
+            batch(() => {
+              props.setAdition(true);
+              props.setMoveUser(true);
+              props.setBeatUser(false);
+            });
+            props.setMove(USER);
+          }
         }
       }
     }
@@ -197,6 +209,7 @@ const mapStateToProps = (state) => ({
   takesСomputer: state.computer.isTakes,
   takesUser: state.user.isTakes,
   tableCards: state.table.tableCards,
+  cardsKit: state.table.cardsKit,
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(Computer);

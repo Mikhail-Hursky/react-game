@@ -4,6 +4,7 @@ import { Card } from "../../../../../redux/interfaces/interfaces";
 import {
   cleanTable,
   setAdition,
+  setMove
 } from "../../../../../redux/actions/tableActions";
 import {
   setBeatUser,
@@ -17,6 +18,7 @@ import {
   setMoveComputer,
   setBeatComputer,
 } from "../../../../../redux/actions/computerActions";
+import { COMPUTER } from "../../../../../redux/types";
 
 interface Props {
   [x: string]: any;
@@ -47,11 +49,13 @@ function ButtonPlayer(props: Props) {
       <button
         type="button"
         onClick={() => {
+          
           batch(() => {
             props.cleanTable();
             props.setAdition(true);
           });
           batch(() => {
+            props.setMove(COMPUTER)
             props.setMoveComputer(true);
             props.setMoveUser(false);
             props.setBeatComputer(false);
@@ -145,6 +149,7 @@ const mapDispatchToProps = {
   setCardsComputer,
   setTakesСomputer,
   setMoveComputer,
+  setMove,
   setBeatComputer,
 };
 
