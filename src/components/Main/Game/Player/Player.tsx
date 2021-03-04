@@ -70,7 +70,6 @@ function Player(props: Props) {
 
     //DEF
     if (props.isMoveUser && props.isBeat && !props.isTakes) {
-      console.log(props.isTakes);
 
       let tableCard = props.tableCards[props.tableCards.length - 1];
       if (

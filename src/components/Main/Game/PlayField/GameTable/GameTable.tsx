@@ -23,14 +23,12 @@ function GameTable(props: Props) {
     let arr: [Card[], Card[], Card[]];
     if (props.whoMove === USER) {
       arr = setCards(props.cardUser, props.cardComp, props.cardsKit);
-      console.log(arr, USER);
       props.setCardUser(arr[0]);
       props.setCardKit(arr[2]);
       props.setCardComputer(arr[1]);
       props.setAdition(false);
     } else if (props.whoMove === COMPUTER) {
       arr = setCards(props.cardComp, props.cardUser, props.cardsKit);
-      console.log(arr, COMPUTER);
       props.setCardUser([...arr[1]]);
       props.setCardKit([...arr[2]]);
       props.setCardComputer([...arr[0]]);

@@ -31,12 +31,6 @@ interface Props {
 }
 
 function ButtonPlayer(props: Props) {
-  console.log(
-    props.isMove,
-    props.isBeat,
-    props.tableCards.length > 0,
-    props.isTakesComp
-  );
 
   //ATACK
   if (
